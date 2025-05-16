@@ -1,0 +1,20 @@
+{
+  "name": "bs",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "node"
+  ],
+  "license": "ISC",
+  "author": "Bhuvan Sharma",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}
