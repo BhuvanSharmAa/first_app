@@ -1,0 +1,45 @@
+# Ignore node_modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Ignore package-lock and yarn lock
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.*  
+
+# Logs
+*.log
+
+# Ignore compiled files
+*.min.js
+*.min.css
+
+# Ignore coverage reports
+coverage/
+
+# Ignore specific config files
+webpack.config.js
+
+# Ignore public/static files
+public/
+static/
+
+# Ignore version control directories
+.git/
+.hg/
+
+# Ignore Prettier itself
+.prettierignore
+
+# Ignore all images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
