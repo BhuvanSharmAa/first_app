@@ -16,7 +16,8 @@ const  uploadOnCloudinary = async (filePath) => {
             folder: 'auto'
         })
         console.log(result);
-        console.log('File uploaded successfully');
+       // console.log('File uploaded successfully');
+       fs.unlinkSync(filePath); // Delete the file after uploading
         return result;
     }
     catch(error)
@@ -26,4 +27,4 @@ const  uploadOnCloudinary = async (filePath) => {
     }
 }
 
-export default uploadOnCloudinary;
+export { uploadOnCloudinary };
