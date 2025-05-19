@@ -60,22 +60,48 @@ userSchema.pre('save', async function(next) {
     next();
 });
 userSchema.methods.isPasswordMatch = async function(password) {
+    
     return await bcrypt.compare(password, this.password);
 };
 userSchema.methods.generateAccessToken = function() {
-    return jwt.sign(
-        { 
-            _id: this._id,
-        email : this.email,
-    username : this.username,
-fullName : this.fullName }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: ACCESS_TOKEN_EXPIRES_IN });
+    try {
+        const token = jwt.sign(
+            { 
+                _id: this._id,
+                email: this.email,
+                username: this.username,
+                fullName: this.fullName 
+            },
+            process.env.ACCESS_TOKEN_SECRET,
+            { 
+                expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN 
+            }
+        )
+        console.log("Access token generated")
+        return token
+    } catch (error) {
+        console.error("Error generating access token:", error)
+        throw new Error("Error generating access token")
+    }
 }
 
 userSchema.methods.generateRefreshToken = function() {
-    return jwt.sign(
-        { 
-            _id: this._id, },
-             process.env.REFRESH_TOKEN_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRES_IN });
+    try {
+        const token = jwt.sign(
+            { 
+                _id: this._id
+            },
+            process.env.REFRESH_TOKEN_SECRET,
+            {
+                expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN 
+            }
+        )
+        console.log("Refresh token generated")
+        return token
+    } catch (error) {
+        console.error("Error generating refresh token:", error)
+        throw new Error("Error generating refresh token")
+    }
 }
 
 
